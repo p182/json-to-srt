@@ -1,4 +1,5 @@
-import json
+#!/bin/python3
+import json,sys
 
 def json_to_srt(json_data):
     srt_content = ""
@@ -20,16 +21,19 @@ def convert_to_srt_time_format(seconds):
 
     return f"{hours:02d}:{minutes:02d}:{int(seconds):02d},{milliseconds:03d}"
 
+#Check argument count
+if len(sys.argv) >2:
 # Read JSON from file
-with open("example.json", "r", encoding="utf-8") as file:
-    json_data = json.load(file)
+	with open(sys.argv[1], "r", encoding="utf-8") as file:
+		json_data = json.load(file)
 
 # Convert JSON to SRT
-srt_data = json_to_srt(json_data)
+	srt_data = json_to_srt(json_data)
 
 # Save the SRT content to a file
-output_file_path = "output.srt"
-with open(output_file_path, "w", encoding="utf-8") as output_file:
-    output_file.write(srt_data)
+	with open(sys.argv[2], "w", encoding="utf-8") as output_file:
+        	output_file.write(srt_data)
 
-print(f"SRT content saved to {output_file_path}")
+	print(f"SRT content saved to {sys.argv[2]}")
+else:
+	print(f"Usage: convert.py input.json output.srt")
