@@ -1,5 +1,5 @@
 # json-to-srt
+Simple JSON subtitle to SRT (subrip) format converter
+Usage:
 
-example.json - ваш файл
-
-выводит srt в output.srt
+convert.py input.json output.srt
